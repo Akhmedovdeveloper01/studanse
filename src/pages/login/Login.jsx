@@ -9,7 +9,12 @@ export default function Login() {
         handleSubmit,
         control,
         formState: { isSubmitting },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+    });
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -52,17 +57,16 @@ export default function Login() {
                             <Lock className="absolute top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
                         }
                     />
+                    <div className="text-right mb-6">
+                        <span className="text-sm text-blue-600 hover:underline cursor-pointer transition">
+                            Forgot Password?
+                        </span>
+                    </div>
+
+                    <Button className="w-full py-3 rounded-xl bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold hover:opacity-90 transition">
+                        Sign In
+                    </Button>
                 </form>
-
-                <div className="text-right mb-6">
-                    <span className="text-sm text-blue-600 hover:underline cursor-pointer transition">
-                        Forgot Password?
-                    </span>
-                </div>
-
-                <Button className="w-full py-3 rounded-xl bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold hover:opacity-90 transition">
-                    Sign In
-                </Button>
             </div>
         </div>
     );
