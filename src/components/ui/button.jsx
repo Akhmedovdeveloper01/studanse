@@ -11,10 +11,10 @@ const buttonVariants = cva(
             variant: {
                 default:
                     "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+                    primary: "flex items-center gap-3 px-10 py-5 text-white  font-medium rounded-full bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 transition",
                 destructive:
                     "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-                outline:
-                    "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+                outline: "px-12 py-4 font-semibold bg-red-300  text-red-700 border-2 border-red-400 rounded-full",
                 secondary:
                     "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
                 ghost: "hover:bg-accent hover:text-accent-foreground",
@@ -35,14 +35,33 @@ const buttonVariants = cva(
 );
 
 const Button = React.forwardRef(
-    ({ className, variant, size, asChild = false, ...props }, ref) => {
+    ({ className, variant, size, asChild = false, children,  loading=false, ...props }, ref) => {
         const Comp = asChild ? Slot : "button";
         return (
+            
             <Comp
                 className={cn(buttonVariants({ variant, size, className }))}
                 ref={ref}
                 {...props}
+            >
+            {loading && (
+          <svg
+            className="animate-spin h-4 w-4"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+              fill="none"
             />
+          </svg>
+        )}
+         {loading ? "Loading..." : children}
+         </Comp>
         );
     }
 );

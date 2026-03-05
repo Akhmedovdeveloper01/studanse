@@ -60,7 +60,7 @@ export default function Login() {
                     </span>
                 </div>
 
-                <Button className="w-full py-3 rounded-xl bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold hover:opacity-90 transition">
+                <Button  className="w-full py-3 rounded-xl bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold hover:opacity-90 transition">
                     Sign In
                 </Button>
             </div>

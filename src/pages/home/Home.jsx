@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div className='w-[500px]'>Home
+
+    </div>
   )
 }
