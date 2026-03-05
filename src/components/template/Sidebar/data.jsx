@@ -1,4 +1,11 @@
-import { BookOpenIcon, DatabaseIcon, HomeIcon, MailIcon, SettingsIcon, Trophy  } from "lucide-react";
+import {
+    BookOpenIcon,
+    DatabaseIcon,
+    HomeIcon,
+    MailIcon,
+    SettingsIcon,
+    Trophy,
+} from "lucide-react";
 
 export const menuItems = [
     {
@@ -10,14 +17,14 @@ export const menuItems = [
     {
         label: "Data Info",
         path: "/data-info",
-        roles: ["admin", "super-admin", "student","teacher"],
+        roles: ["admin", "super-admin", "student", "teacher"],
         icon: <DatabaseIcon className="w-5 h-5" />,
     },
     {
         label: "Achievements",
         path: "/achievements",
-        roles: ["student"],
-        icon: <Trophy  className="w-5 h-5" />,
+        roles: ["student", "admin"],
+        icon: <Trophy className="w-5 h-5" />,
     },
     {
         label: "Mastering",
