@@ -1,45 +1,27 @@
+import CustomSelect from "@/components/molecules/CustomSelect";
 import DataTable from "@/components/organisms/DataTable";
 import { Button } from "@/components/ui/button";
 import React from "react";
 
 export default function Home() {
-  const headerData = [
+  const selectdata =[
     {
-      title: "Manage Admins",
-      button: "ADD",
-      input: "search",
-    },
-  ];
-  const data = [
-    {
-      name: "lorem",
-      age: 30,
-      surname: "loremov",
+      name:"lorem",
     },
     {
-      name: "loasdfasdfasdfrem",
-      age: 40,
-      surname: "loasdfasdfremov",
+      name:"lorem",
     },
     {
-      name: "loradfasdfem",
-      age: 20,
-      surname: "lorasdfasdfasdfaemov",
+      name:"lorem",
     },
-  ];
-
-  const columns = [
-    { key: "name", label: "Name" },
-    { key: "age", label: "Age" },
     {
-      key: "surname",
-      label: "Surname",
-      render: () => <Button variant={"primary"}>lorem</Button>,
+      name:"lorem",
     },
-  ];
+  ]
+  
   return (
     <div className="w-full">
-      <DataTable columns={columns} data={data} headerData={headerData} />
+  <CustomSelect selectData={selectdata}/>
     </div>
   );
 }
