@@ -5,11 +5,10 @@ import { client } from "./config/reaquest_clinets.js";
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "./context/UserContext.jsx";
 import "./index.css";
-const currentUser = { role: "student" };
 
 createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={client}>
-        <UserProvider user={currentUser}>
+        <UserProvider>
             <App />
             <ToastContainer />
         </UserProvider>

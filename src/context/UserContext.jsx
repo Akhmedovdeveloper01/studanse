@@ -1,9 +1,13 @@
-import { createContext, useContext } from "react";
+import { loadState } from "@/config/storej";
+import { createContext, useState } from "react";
 
-const UserContext = createContext(null);
+export const UserContext = createContext(null);
 
-export const useUser = () => useContext(UserContext);
-
-export const UserProvider = ({ children, user }) => {
-    return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+export const UserProvider = ({ children }) => {
+    const [roles, setRoles] = useState("" || loadState("role"));
+    return (
+        <UserContext.Provider value={{ roles, setRoles }}>
+            {children}
+        </UserContext.Provider>
+    );
 };

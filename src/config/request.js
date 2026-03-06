@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loadState } from "../sotej/localstorejs";
+import { loadState } from "./storej";
 
 const request = axios.create({
     baseURL: import.meta.env.VITE_SERVER,

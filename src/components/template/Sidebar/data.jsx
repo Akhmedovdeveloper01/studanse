@@ -11,37 +11,57 @@ export const menuItems = [
     {
         label: "Home",
         path: "/",
-        roles: ["admin", "teacher", "super-admin", "student"],
+        roles: [
+            "ROLE_ADMIN",
+            "ROLE_TEACHER",
+            "ROLE_SYSTEM_ADMIN",
+            "ROLE_STUDENT",
+        ],
         icon: <HomeIcon className="w-5 h-5" />,
     },
     {
         label: "Data Info",
         path: "/data-info",
-        roles: ["admin", "super-admin", "student", "teacher"],
+        roles: [
+            "ROLE_ADMIN",
+            "ROLE_SYSTEM_ADMIN",
+            "ROLE_STUDENT",
+            "ROLE_TEACHER",
+        ],
         icon: <DatabaseIcon className="w-5 h-5" />,
     },
     {
         label: "Achievements",
         path: "/achievements",
-        roles: ["student", "admin"],
+        roles: ["ROLE_STUDENT", "ROLE_ADMIN"],
         icon: <Trophy className="w-5 h-5" />,
     },
     {
         label: "Mastering",
         path: "/mastering",
-        roles: ["admin", "super-admin"],
+        roles: ["ROLE_ADMIN", "ROLE_SYSTEM_ADMIN"],
         icon: <BookOpenIcon className="w-5 h-5" />,
     },
     {
         label: "Account Settings",
         path: "/settings",
-        roles: ["admin", "super-admin", "teacher", "student"],
+        roles: [
+            "ROLE_ADMIN",
+            "ROLE_SYSTEM_ADMIN",
+            "ROLE_TEACHER",
+            "ROLE_STUDENT",
+        ],
         icon: <SettingsIcon className="w-5 h-5" />,
     },
     {
         label: "Communications",
         path: "/communications",
-        roles: ["admin", "super-admin", "teacher", "student"],
+        roles: [
+            "ROLE_ADMIN",
+            "ROLE_SYSTEM_ADMIN",
+            "ROLE_TEACHER",
+            "ROLE_STUDENT",
+        ],
         icon: <MailIcon className="w-5 h-5" />,
     },
 ];

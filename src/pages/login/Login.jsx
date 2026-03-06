@@ -1,10 +1,19 @@
-import { Mail, Lock, Eye } from "lucide-react";
+import { Mail, Lock } from "lucide-react";
 import project__logo from "../../assets/img/project_logo.png";
 import { CustomInput } from "@/components/molecules/CustomInput";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { authLogin } from "@/service/login";
+import { getRoleFromToken } from "@/config/getRoleFromToken";
+import { saveState } from "@/config/storej";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "@/context/UserContext";
 
 export default function Login() {
+    const navigate = useNavigate();
+    const { _, setRoles } = useContext(UserContext);
+
     const {
         handleSubmit,
         control,
@@ -17,8 +26,19 @@ export default function Login() {
     });
 
     const onSubmit = async (data) => {
-        console.log(data);
+        try {
+            const res = await authLogin(data);
+            saveState("token", res?.data?.data?.token);
+            setRoles(res?.data?.data?.token);
+            saveState("role", getRoleFromToken(res?.data?.data?.token));
+            if (res?.data?.data?.token) {
+                navigate("/");
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f0c29] via-[#1a1235] to-[#2a0845]">
             <div className="w-[420px] backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl">
@@ -67,7 +87,6 @@ export default function Login() {
                         Sign In
                     </Button>
                 </form>
-
             </div>
         </div>
     );
