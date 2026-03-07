@@ -4,11 +4,15 @@
 
 :root {
   --bgColor: 0, 0%, 0%; 
+  --titleBgColors:#191636FF;
+  --iconsColor:#2B7FFFFF;
   --textColor: 0 0% 100%;   
 }
 
 .light {
+  --iconsColor:#2B7FFFFF;
   --bgColor: 48, 100%, 99%;
+  --titleBgColors:#DFE3FDFF;
   --textColor: 0 0% 0%;   
 }
 
