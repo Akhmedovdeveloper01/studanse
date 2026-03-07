@@ -4,7 +4,7 @@ import { CustomSheet } from "@/components/organisms/CustomSheet";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { CustomSelect } from "@/components/molecules/CustomSelect";
-import { CustomTextarea } from "@/components/organisms/CustomTextArea";
+import { CustomTextarea } from "@/components/organisms/CustomTextarea";
 import { schoolCreate, schoolUpdate } from "@/service/school";
 import { useQuery } from "@tanstack/react-query";
 import { schoolByIdQuery } from "@/query";
