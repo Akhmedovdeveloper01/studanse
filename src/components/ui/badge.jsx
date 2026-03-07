@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cva } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
@@ -11,16 +10,20 @@ const badgeVariants = cva(
         default:
           "border-transparent bg-primary text-primary-foreground shadow cursor-pointer hover:bg-primary/80",
         active:
-          "px-3 py-1 text-xs font-700 text-white bg-green-600 border cursor-pointer  border-green-600 rounded-md ",
+          "px-3 py-1 text-xs font-bold text-white bg-green-600 border cursor-pointer border-green-600 rounded-md",
         block:
-          "px-3 py-1 text-xs font-700 text-white bg-red-600 border cursor-pointer  border-red-600 rounded-md ",
+          "px-3 py-1 text-xs font-bold text-white bg-red-600 border cursor-pointer border-red-600 rounded-md",
+        secondary:
+          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive:
+          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
         outline: "text-foreground",
       },
     },
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 function Badge({ className, variant, ...props }) {

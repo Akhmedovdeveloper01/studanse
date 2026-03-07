@@ -1,4 +1,4 @@
-import CustomIcon from '@/components/atoms/CustomIcon/CustomIcon'
+import CustomIcon from '@/components/atoms/CustomTitleIcon/CustomIcon'
 import CustomCard from '@/components/organisms/CustomCard/CustomCard'
 import { Users } from 'lucide-react'
 import React from 'react'

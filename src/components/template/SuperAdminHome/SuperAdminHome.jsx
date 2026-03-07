@@ -3,7 +3,7 @@ import React from "react";
 import user from "../../../assets/svg/user_icon.svg";
 import { Link } from "react-router-dom";
 import { Building2 } from "lucide-react";
-import CustomIcon from "@/components/atoms/CustomIcon/CustomIcon";
+import CustomIcon from "@/components/atoms/CustomTitleIcon/CustomIcon";
 
 export default function SuperAdminHome() {
   return (

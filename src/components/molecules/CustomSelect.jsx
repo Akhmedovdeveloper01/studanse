@@ -1,42 +1,32 @@
 import React from "react";
 import { Controller } from "react-hook-form";
+import { cn } from "@/lib/utils";
+
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 
 export function CustomSelect({
   name,
   control,
   label,
-  placeholder,
-  selectData = [],
+  placeholder = "Tanlang...",
+  options = [],
   loading = false,
   disabled,
+  defaultValue,
   className,
   containerClassName,
-  startIcon,
-  endIcon,
-  searchable = false,
+  ...props
 }) {
-  const [search, setSearch] = React.useState("");
-
-  const filteredData = React.useMemo(() => {
-    if (!searchable || !search.trim()) return selectData;
-    return selectData.filter((item) =>
-      (item.name || "").toLowerCase().includes(search.toLowerCase())
-    );
-  }, [selectData, search, searchable]);
-
   return (
     <div className={cn("space-y-2", containerClassName)}>
       {label && (
-        <label className="text-white text-sm font-medium text-foreground">
+        <label className="dark:text-white text-sm font-medium text-foreground">
           {label}
         </label>
       )}
@@ -44,94 +34,47 @@ export function CustomSelect({
       <Controller
         name={name}
         control={control}
+        defaultValue={defaultValue ?? ""}
         render={({ field, fieldState }) => (
           <>
-            <div className="relative">
-              {/* Start Icon */}
-              {startIcon && (
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 z-10 pointer-events-none text-muted-foreground">
-                  {startIcon}
-                </div>
-              )}
-
-              <Select
-                value={field.value ?? ""}
-                onValueChange={field.onChange}
-                disabled={loading || disabled}
-                onOpenChange={(open) => {
-                  if (!open) setSearch("");
-                }}
+            <Select
+              value={field.value ?? ""}
+              onValueChange={field.onChange}
+              disabled={loading || disabled}
+              {...props}
+            >
+              <SelectTrigger
+                className={cn(
+                  fieldState.error &&
+                    "border-red-500 focus-visible:ring-red-500",
+                  className,
+                )}
               >
-                <SelectTrigger
-                  className={cn(
-                    "w-full text-textColor",
-                    startIcon && "pl-9",
-                    endIcon && "pr-9",
-                    fieldState.error &&
-                      "border-red-500 focus-visible:ring-red-500",
-                    className
-                  )}
-                >
-                  <SelectValue placeholder={placeholder || "Select..."} />
-                </SelectTrigger>
+                {loading ? (
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-primary" />
+                    <span className="text-sm">Yuklanmoqda...</span>
+                  </div>
+                ) : (
+                  <SelectValue placeholder={placeholder} />
+                )}
+              </SelectTrigger>
 
-                <SelectContent>
-                  {/* Search input */}
-                  {searchable && (
-                    <div className="px-2 py-1.5 border-b">
-                      <input
-                        className="w-full text-sm bg-transparent outline-none placeholder:text-muted-foreground"
-                        placeholder="Qidirish..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        onKeyDown={(e) => e.stopPropagation()}
-                      />
-                    </div>
-                  )}
+              <SelectContent>
+                {options?.map((opt) => (
+                  <SelectItem
+                    key={opt.value}
+                    value={String(opt.value)}
+                    disabled={opt.disabled}
+                  >
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
 
-                  <SelectGroup>
-                    {loading ? (
-                      <div className="px-2 py-4 text-sm text-center text-muted-foreground">
-                        loading...
-                      </div>
-                    ) : filteredData.length === 0 ? (
-                      <div className="px-2 py-4 text-sm text-center text-muted-foreground">
-                      No data found
-                      </div>
-                    ) : (
-                      filteredData.map((item, index) => (
-                        <SelectItem
-                          key={index}
-                          value={item.value || item.name}
-                        >
-                          {item.name}
-                        </SelectItem>
-                      ))
-                    )}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-
-              {/* End Icon */}
-              {endIcon && !loading && (
-                <div className="absolute right-8 top-1/2 -translate-y-1/2 z-10 pointer-events-none text-muted-foreground">
-                  {endIcon}
-                </div>
-              )}
-
-              {/* Loading spinner */}
-              {loading && (
-                <div className="absolute right-8 top-1/2 -translate-y-1/2 z-10">
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-primary" />
-                </div>
-              )}
-            </div>
-
-            {/* Error message */}
             {fieldState.error && (
-              <p className="text-sm text-red-500">
-                {fieldState.error.message}
-              </p>
+              <p className="text-sm text-red-500">{fieldState.error.message}</p>
             )}
           </>
         )}
