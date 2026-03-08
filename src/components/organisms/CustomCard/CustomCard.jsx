@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Building,
   ChevronRight,
@@ -26,6 +27,7 @@ function CustomAvatar({ src, fallback = "US" }) {
 
 export default function CustomCard({
   src,
+  isLoading,
   avatarFallback,
   BadgeVariants,
   Badgeboolean = false,
@@ -42,6 +44,36 @@ export default function CustomCard({
   mkClass,
 }) {
   const isActive = BadgeVariants === "ACTIVE";
+  
+  if (isLoading) {
+  return (
+    <div className="w-full max-w-[450px] rounded-2xl p-5 border border-white/[0.07] shadow-2xl">
+      <div className="flex justify-between items-center mb-4">
+        <Skeleton className="w-12 h-12 rounded-xl" />
+        <Skeleton className="w-20 h-6 rounded-full" />
+      </div>
+
+      <Skeleton className="w-[70%] h-6 mb-2" />
+      <Skeleton className="w-[50%] h-4 mb-4" />
+
+      <div className="flex justify-between">
+        <div className="space-y-2">
+          <Skeleton className="w-32 h-4" />
+          <Skeleton className="w-28 h-4" />
+        </div>
+
+        <div className="space-y-2">
+          <Skeleton className="w-28 h-4" />
+          <Skeleton className="w-24 h-4" />
+        </div>
+      </div>
+
+      <div className="flex justify-end mt-6">
+        <Skeleton className="w-9 h-9 rounded-full" />
+      </div>
+    </div>
+  );
+}
 
   return (
     <div className="w-full max-w-[450px] rounded-2xl p-5 border border-white/[0.07] shadow-2xl bg-transpatent hover-scale">

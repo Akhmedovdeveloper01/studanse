@@ -23,6 +23,7 @@ export default {
         dashbordcolor: "hsl(var(--dashbordcolor))",
         titleBgColor: "var(--titleBgColors)",
         iconsColor: "var(--iconsColor)",
+        cardcolor: "var(--cardcolor)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
