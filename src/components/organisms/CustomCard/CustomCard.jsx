@@ -26,8 +26,8 @@ function CustomAvatar({ src, fallback = "US" }) {
 
 export default function CustomCard({
   src,
-  avatarFallback = "US",
-  BadgeVariants = "active",
+  avatarFallback,
+  BadgeVariants,
   Badgeboolean = false,
   deta,
   title,
@@ -41,10 +41,10 @@ export default function CustomCard({
   late,
   mkClass,
 }) {
-  const isActive = BadgeVariants === "active";
+  const isActive = BadgeVariants === "ACTIVE";
 
   return (
-    <div className="max-w-[500px] w-full rounded-2xl p-5 border border-white/[0.07] shadow-2xl bg-transpatent hover-scale">
+    <div className="w-full max-w-[450px] rounded-2xl p-5 border border-white/[0.07] shadow-2xl bg-transpatent hover-scale">
       {/* Top row */}
       <div className="flex justify-between items-center mb-3.5">
         <CustomAvatar src={src} fallback={avatarFallback} />
