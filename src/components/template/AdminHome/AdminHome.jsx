@@ -20,6 +20,6 @@ export default function AdminHome() {
          late={1}
         />
       </Link>
-    </div>
+    </div>  /////
   )
 }
