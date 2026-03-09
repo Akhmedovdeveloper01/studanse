@@ -1,5 +1,5 @@
 import { schoolById, schoolsAll } from "@/service/school";
-import { superAdminAll, superAdminById } from "@/service/super-admin";
+import { superAdminAll, superAdminById, superAdminMe } from "@/service/super-admin";
 
 // school
 export const schoolAllQuery = () => {
@@ -30,3 +30,10 @@ export const superAdminByIdlQuery = (id) => {
         queryFn: async () => superAdminById(id),
     };
 };
+
+export const MeUrl = (params)=>{
+    return{
+        queryKey:["superAdminMeurl", params],
+        queryFn:async()=> superAdminMe(params)
+    }
+}
