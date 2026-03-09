@@ -3,7 +3,7 @@ import React from "react";
 import { Building2 } from "lucide-react";
 import CustomIcon from "@/components/atoms/CustomTitleIcon/CustomIcon";
 import { useQuery } from "@tanstack/react-query";
-import { MeUrl, schoolAllQuery } from "@/query";
+import { MeUrl } from "@/query";
 import { CustomDialog } from "@/components/organisms/CustomDialog";
 import { useMediaQuery } from "@/components/atoms/UseMediaQuery/UseMediaQuery";
 
