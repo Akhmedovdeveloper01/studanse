@@ -85,9 +85,9 @@ export default function SuperAdmins() {
                                     setOpen(true);
                                     setId("");
                                 }}
-                                startIcon={<PlusIcon />}
                                 variant={"primary"}
                             >
+                                {<PlusIcon />}
                                 Add Admin
                             </Button>
                         </div>

@@ -20,6 +20,7 @@ export const item = [
         borderColor: "border-blue-500/30",
         iconColor: "text-blue-500",
         buttonGradient: "from-blue-600 to-cyan-600",
+        queryKey: "students-all",
     },
     {
         type: "teachers",
@@ -30,6 +31,7 @@ export const item = [
         borderColor: "border-green-500/30",
         iconColor: "text-green-500",
         buttonGradient: "from-green-600 to-emerald-600",
+        queryKey: "teacher-all",
     },
     {
         type: "admins",
@@ -40,6 +42,7 @@ export const item = [
         borderColor: "border-purple-500/30",
         iconColor: "text-purple-500",
         buttonGradient: "from-purple-600 to-pink-600",
+        queryKey: "admin-all",
     },
     {
         type: "classes",
@@ -50,6 +53,7 @@ export const item = [
         borderColor: "border-orange-500/30",
         iconColor: "text-orange-500",
         buttonGradient: "from-orange-600 to-red-600",
+        queryKey: "class-group",
     },
     {
         type: "lessons",
@@ -60,6 +64,7 @@ export const item = [
         borderColor: "border-teal-500/30",
         iconColor: "text-teal-500",
         buttonGradient: "from-teal-600 to-cyan-600",
+        queryKey: "lesson-all",
     },
     {
         type: "subjects",
@@ -70,6 +75,7 @@ export const item = [
         borderColor: "border-indigo-500/30",
         iconColor: "text-indigo-500",
         buttonGradient: "from-indigo-600 to-purple-600",
+        queryKey: "subject-all",
     },
     {
         type: "reasons",
@@ -80,6 +86,7 @@ export const item = [
         borderColor: "border-yellow-500/30",
         iconColor: "text-yellow-500",
         buttonGradient: "from-yellow-600 to-orange-600",
+        queryKey: "reason-all",
     },
     {
         type: "school",
@@ -90,6 +97,7 @@ export const item = [
         borderColor: "border-rose-500/30",
         iconColor: "text-rose-500",
         buttonGradient: "from-rose-600 to-pink-600",
+        queryKey: "school-mine",
     },
 ];
 

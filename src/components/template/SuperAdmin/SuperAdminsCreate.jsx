@@ -186,7 +186,7 @@ export default function SuperAdminsCreate({ open, setOpen, id, setId }) {
               >
                 Cancel
               </Button>
-              <Button loading={isUpdating || isCreating} variant="primary">
+              <Button  variant="primary">
                 Update
               </Button>
             </div>
