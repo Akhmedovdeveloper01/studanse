@@ -38,8 +38,10 @@ export const MUTATION_CONFIG = {
         delete: (id) => adminDelete(id),
         invalidateKeys: () => ["admin-all"],
         successMessage: (action, id) => {
+            console.log(action, id);
+            if (action === "create") return "Admin yaratildi!";
+            if (action === "update") return "Admin yangilandi!";
             if (action === "delete") return "Admin o'chirildi!";
-            return id ? "Admin yangilandi!" : "Admin yaratildi!";
         },
     },
     // class-group da id kelmagani uchun, update va delete ishlamaydi.
