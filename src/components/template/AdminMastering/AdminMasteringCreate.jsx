@@ -129,13 +129,17 @@ export default function AdminMasteringCreate({
         if (editData) reset(editData);
     }, [open, id, detailData]);
 
+    const schoolId = school?.[0]?.id;
+
+    const isToast = id || schoolId ? "update" : "create";
     const { mutate: mutation, isPending } = useCustomMutation({
-        mutationFn:
-            id || isSchool
-                ? mutationConf.update(id || school?.id)
-                : mutationConf.create,
-        invalidateKeys: mutationConf.invalidateKeys(id),
-        successMessage: mutationConf.successMessage(id),
+        mutationFn: id
+            ? mutationConf.update(id)
+            : isSchool
+            ? mutationConf.update(schoolId)
+            : mutationConf.create,
+        invalidateKeys: mutationConf.invalidateKeys(id || schoolId),
+        successMessage: mutationConf.successMessage(isToast, id || schoolId),
         onSuccess: () => {
             setId("");
             reset(config.defaultValues);
@@ -218,14 +222,23 @@ export default function AdminMasteringCreate({
                 <div className="mt-4 flex gap-3 justify-end">
                     <Button
                         type="button"
-                        variant="destructive"
-                        className="rounded-full"
+                        variant="light"
+                        className="rounded-xl border-white/20 dark:border-white/10 hover:bg-white/10 dark:hover:bg-white/5"
                         onClick={() => setOpen(false)}
                     >
                         Cancel
                     </Button>
-                    <Button type="submit" loading={isPending} variant="primary">
-                        {id || isSchool ? "Update" : "Create"}
+                    <Button
+                        type="submit"
+                        className={`bg-gradient-to-r ${config.gradient} hover:opacity-90 text-white border-0 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 min-w-[100px]`}
+                    >
+                        {isPending
+                            ? id || schoolId
+                                ? "Updating..."
+                                : "Creating..."
+                            : id || schoolId
+                            ? "Update"
+                            : "Create"}
                     </Button>
                 </div>
             </form>

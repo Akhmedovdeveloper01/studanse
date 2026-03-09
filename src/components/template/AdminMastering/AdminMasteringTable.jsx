@@ -58,7 +58,7 @@ export default function AdminMasteringTable({
 
     const { data, isLoading } = useQuery({
         ...QUERY_MAP[selectedConfig.type]?.(searchParams, filters),
-        queryKey: [selectedConfig.type, searchParams.toString(), filters],
+        queryKey: [selectedConfig.queryKey, searchParams.toString(), filters],
         enabled: !!selectedConfig.type,
     });
 
@@ -83,7 +83,9 @@ export default function AdminMasteringTable({
                 open={open}
                 setOpen={setOpen}
                 id={id}
-                school={tableData || undefined}
+                school={
+                    selectedConfig.type === "school" ? [data?.data?.data] : []
+                }
                 setId={setId}
             />
             <div className="flex items-center gap-3 mb-8">
@@ -128,10 +130,9 @@ export default function AdminMasteringTable({
                                     }
                                     setOpen(true);
                                 }}
-                                startIcon={!isSchholMian && <PlusIcon />}
-                                variant={"primary"}
                                 className={`bg-gradient-to-r ${selectedConfig?.buttonGradient} hover:opacity-90 text-white border-0 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
                             >
+                                {!isSchholMian && <PlusIcon />}
                                 {isSchholMian
                                     ? "Edit school info"
                                     : `Add ${selectedConfig.title}`}

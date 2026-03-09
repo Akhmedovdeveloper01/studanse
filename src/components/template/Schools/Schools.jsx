@@ -73,9 +73,9 @@ export default function Schools() {
                                     setOpen(true);
                                     setId("");
                                 }}
-                                startIcon={<PlusIcon />}
                                 variant={"primary"}
                             >
+                                {<PlusIcon />}
                                 Add School
                             </Button>
                         </div>
