@@ -1,4 +1,4 @@
-import { schoolById, schoolsAll } from "@/service/school";
+import { schoolById, schoolMine, schoolsAll } from "@/service/school";
 import { adminAll, adminById } from "@/service/admin";
 import {
     adminClassesStudents,
@@ -53,6 +53,12 @@ export const superAdminByIdlQuery = (id) => {
 export const MeUrl = (params)=>{
     return{
         queryKey:["superAdminMeurl", params],
+        queryFn:async()=> superAdminMe(params)
+    }
+}
+export const userMeQuery = (params)=>{
+    return{
+        queryKey:["user-me-all", params],
         queryFn:async()=> superAdminMe(params)
     }
 }
