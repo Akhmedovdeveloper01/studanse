@@ -101,7 +101,7 @@ body {
   background-color: var(--bgColor);
   overflow: hidden;
 }
-.container{
+.container {
   max-width: 1200px;
   width: 100%;
   margin-left: auto;

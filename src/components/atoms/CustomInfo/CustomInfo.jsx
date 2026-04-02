@@ -9,12 +9,16 @@ const COLORS = ['#ef4444', '#f59e0b', '#a855f7', '#3b82f6', '#22c55e', '#ec4899'
 const makeCenterPlugin = (label) => ({
     id: 'centerText',
     beforeDraw(chart) {
-        const { width, height, ctx } = chart;
+        const { width, height, ctx, canvas } = chart;
+        
+        // textColor ni DOM dan o'qiymiz
+        const textColor = getComputedStyle(canvas).getPropertyValue('color') || '#ffffff';
+
         ctx.restore();
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.font = 'bold 26px sans-serif';
-        ctx.fillStyle = "text-textColor";
+        ctx.fillStyle = textColor;   // ← dynamic
         ctx.fillText(label, width / 2, height / 2 - 10);
         ctx.font = '13px sans-serif';
         ctx.fillStyle = '#aaaaaa';
@@ -121,7 +125,7 @@ function ReasonChart({ reasons }) {
 
     return (
         <div className="flex flex-col items-center gap-6 p-6 sm:p-8 w-full">
-            <div className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px]">
+            <div className="w-[180px] h-[180px] text-textColor sm:w-[220px] sm:h-[220px]">
                 <Doughnut
                     data={chartData}
                     options={makeOptions(-90)}
