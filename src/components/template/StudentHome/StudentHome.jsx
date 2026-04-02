@@ -1,12 +1,15 @@
 import CustomIcon from "@/components/atoms/CustomTitleIcon/CustomIcon";
 import StudanceReportStatus from "@/components/organisms/StudanceReportStatus/StudanceReportStatus";
-import { Spinner } from "@/components/ui/spinner";
+import { ThemaContext } from "@/context/ThemaContext";
 import { userMeQuery } from "@/query";
 import { useQuery } from "@tanstack/react-query";
 import { BookOpen, Calendar, Clock, Delete, Edit, User } from "lucide-react";
-import React from "react";
+import React, { useContext } from "react";
 
 export default function StudentHome() {
+
+  const { thema } = useContext(ThemaContext)
+
   const { data } = useQuery({ ...userMeQuery() });
   const studentInfo = data?.data?.studentInfo;
   const todaySubjects = data?.data?.todaySubjects;
@@ -19,7 +22,7 @@ export default function StudentHome() {
     <div className="mb-[100px]">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-[1200px] mx-auto px-4">
         <div className="flex flex-col gap-8">
-          <div className="border border-[#29323C] p-4 rounded-xl">
+          <div className={` p-4 rounded-xl ${thema === "dark" ? "border border-[#29343FFF] bg-[#0C1626FF]  " : "bg-[#F6F5F9FF] shadow-[0_10px_30px_rgba(0,0,0,0.4),_inset_0_1px_1px_rgba(255,255,255,0.05)]"} `} >
             <CustomIcon
               title="Today's Subjects"
               className="border-none bg-[#07331F] rounded-full p-2"
@@ -46,7 +49,7 @@ export default function StudentHome() {
             ))}
           </div>
 
-          <div className="border border-[#29323C] p-4 rounded-xl">
+          <div className={`p-4 rounded-xl ${thema === "dark" ? " border border-[#29343FFF] bg-[#0C1626FF]  " : "bg-[#F6F5F9FF] shadow-[0_10px_30px_rgba(0,0,0,0.4),_inset_0_1px_1px_rgba(255,255,255,0.05)]"} `}>
             <CustomIcon
               title="Scheduled Reports"
               className="border-none bg-[#3B1F0F] rounded-full p-2"
@@ -76,8 +79,7 @@ export default function StudentHome() {
             </div>
           </div>
 
-          {/* Student Info — chap ustun pastida */}
-          <div className="border border-[#29323C] text-textColor rounded-xl p-4">
+          <div className={` text-textColor rounded-xl p-4 ${thema === "dark" ? " border border-[#29343FFF] bg-[#0C1626FF]  " : "bg-[#F6F5F9FF] shadow-[0_10px_30px_rgba(0,0,0,0.4),_inset_0_1px_1px_rgba(255,255,255,0.05)]"} `}>
             <CustomIcon
               title="Student Information"
               icon={User}
@@ -102,8 +104,7 @@ export default function StudentHome() {
           </div>
         </div>
 
-        {/* O'ng ustun — to'liq balandlik */}
-        <div className="border border-[#29323C] p-4 rounded-xl h-fit">
+        <div className={`p-4 rounded-xl h-fit ${thema === "dark" ? " border border-[#29343FFF] bg-[#0C1626FF]  " : "bg-[#F6F5F9FF] shadow-[0_10px_30px_rgba(0,0,0,0.4),_inset_0_1px_1px_rgba(255,255,255,0.05)]"} `}>
           <StudanceReportStatus />
         </div>
       </div>

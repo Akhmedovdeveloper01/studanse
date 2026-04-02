@@ -9,7 +9,13 @@ import {
 } from "@/service/class";
 import { lessonAll, lessonById } from "@/service/lesson";
 import { reasonAll, reasonById } from "@/service/reason";
-import { studentById, studentGet, studentsAll } from "@/service/student";
+import {
+  studentAtechment,
+  studentById,
+  studentGet,
+  studentInfo,
+  studentsAll,
+} from "@/service/student";
 import { subjectAll, subjectById } from "@/service/subject";
 import {
   superAdminAll,
@@ -201,23 +207,32 @@ export const student = () => {
   };
 };
 
-// export const AdminHomeQuery = () => {
-//   return {
-//     queryKey: ["adminData"],
-//   };
-// };
+// atichments
+export const studentAchievementQuery = () => {
+  return {
+    queryKey: ["student-achievement"],
+    queryFn: async () => studentAtechment(),
+  };
+};
 
-export const teacherClassesstudentsQuery = () =>{
-  return{
-    queryKey:["Stundents"],
-    queryFn: async()=> TeacherClasses()
-  }
-}
+export const studentDataInfoQuery = () => {
+  return {
+    queryKey: ["student-data-info"],
+    queryFn: async () => studentInfo(),
+  };
+};
+
+export const teacherClassesstudentsQuery = () => {
+  return {
+    queryKey: ["Stundents"],
+    queryFn: async () => TeacherClasses(),
+  };
+};
 
 // user settings
 export const getUserSettingsQuery = () => {
   return {
     queryKey: ["user-settings"],
-    queryFn: async () => getUserSettings()
-  }
-} 
+    queryFn: async () => getUserSettings(),
+  };
+};

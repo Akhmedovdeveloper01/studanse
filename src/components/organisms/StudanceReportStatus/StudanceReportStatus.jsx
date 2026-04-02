@@ -9,7 +9,6 @@ import { CustomTextarea } from "../CustomTextarea";
 export default function StudanceReportStatus() {
   const { control } = useForm();
   const [state, setstate] = React.useState(null);
-  // console.log(state);
 
   return (
     <div className="px-6">
@@ -58,9 +57,9 @@ export default function StudanceReportStatus() {
             Note: Cannot select past dates or Sundays (school closed)
           </p>
           <CustomSelect
-            name="status" // formdagi key
-            control={control} // react-hook-form control
-            label="Report Status" // label
+            name="status"
+            control={control} 
+            label="Report Status"
             placeholder="Choose a reason..."
             className={"rounded-xl bg-gray-200 "}
             options={[{ value: "fam", label: "Absence" }]}
@@ -74,7 +73,6 @@ export default function StudanceReportStatus() {
             rows={6}
           />
           <Button
-            // type="submit"
             type="button"
             className=" my-4 py-8 w-[100%] bg-[green] text-white  rounded-xl text-[20px] hover:bg-green-800 "
           >
