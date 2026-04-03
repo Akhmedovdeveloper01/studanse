@@ -41,7 +41,7 @@ export default function Home() {
     <Suspense
       fallback={
         <div className="flex justify-center h-[100vh] items-center">
-          {<Spinner  className={"text-textColor w-12 h-12"} />}
+          {<Spinner className={"text-textColor w-12 h-12"} />}
         </div>
       }
     >

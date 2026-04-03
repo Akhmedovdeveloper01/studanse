@@ -9,6 +9,9 @@ export default function Achievements() {
 
   const achievements = data?.data ?? []
 
+  console.log(achievements);
+
+
   return (
     <div>
       <div className='flex justify-center'>
@@ -19,7 +22,7 @@ export default function Achievements() {
           icon={Trophy}
           font={700}
           title='Achievements'
-        />  
+        />
       </div>
 
       <div className='flex flex-col gap-4 mt-4'>

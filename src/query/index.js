@@ -7,7 +7,11 @@ import {
   classGroupById,
   TeacherClasses,
 } from "@/service/class";
-import { lessonAll, lessonById } from "@/service/lesson";
+import {
+  attendancePost,
+  lessonAll,
+  lessonById,
+} from "@/service/lesson";
 import { reasonAll, reasonById } from "@/service/reason";
 import {
   studentAtechment,
@@ -118,6 +122,12 @@ export const studentQuery = (id) => {
   };
 };
 
+/// attendance  in student
+export const attendancePostMutation = (payload) => {
+  return attendancePost(payload);
+};
+
+
 // teacher
 export const teacherAllQuery = (params, data) => {
   return {
@@ -163,10 +173,10 @@ export const lessonAllQuery = (params, data) => {
   };
 };
 
-export const lessonQuery = (id) => {
+export const lessonQuery = (userId) => {
   return {
-    queryKey: ["lesson", id],
-    queryFn: async () => lessonById(id),
+    queryKey: ["lesson", userId],
+    queryFn: async () => lessonById(userId),
   };
 };
 
