@@ -11,7 +11,6 @@ import { subjectCreate, subjectDelete, subjectUpdate } from "@/service/subject";
 import { reasonCreate, reasonDelete, reasonUpdate } from "@/service/reason";
 import { schoolMineUpdate } from "@/service/school";
 
-
 export const MUTATION_CONFIG = {
     Students: {
         create: studentCreate,

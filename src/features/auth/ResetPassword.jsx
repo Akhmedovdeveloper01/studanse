@@ -19,13 +19,14 @@ export default function ResetPassword({ userEmail }) {
     const token = searchParams.get("token");
 
     const Submit = (data) => {
-        const Payload = {
+        const payload = {
             token: token,
             newPassword: data.newPassword,
             confirmPassword: data.Confirm,
 
         }
-        console.log(Payload);
+        mutate(payload)
+        console.log(payload);
 
     }
     return (
