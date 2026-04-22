@@ -36,6 +36,7 @@ export default function Login() {
             },
         });
     };
+    
 
     if (userEmail) {
         toast.success(<h1>Check your email {userEmail}</h1>)

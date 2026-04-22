@@ -5,10 +5,10 @@ import { getUserSettingsQuery } from "@/query";
 
 export default function SuperAdminSettings() {
     const { data } = useQuery({ ...getUserSettingsQuery() });
-    console.log(data);
+    const result = data?.data?.data || [];
     return (
         <div>
-            <CustomSettings />
+            <CustomSettings userData={result} />
         </div>
     );
 }

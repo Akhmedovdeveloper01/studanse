@@ -16,9 +16,18 @@ export function useCustomMutation({
             invalidateKeys.forEach((key) => {
                 queryClient.invalidateQueries({ queryKey: [key] });
             });
-            if (successMessage) toast.success(successMessage);
+            if (successMessage) {
+                const message =
+                    typeof successMessage === "function"
+                        ? successMessage(data)
+                        : successMessage;
+
+                toast.success(message);
+            }
+
             onSuccess?.(data);
         },
+
         onError: (error) => {
             toast.error(error?.response?.data?.message ?? "Xatolik yuz berdi");
             onError?.(error);
